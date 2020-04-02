@@ -28,16 +28,23 @@ c_df.set_index('Place', inplace=True)
 c_df.drop(['Province/State','Country/Region','Lat','Long'],axis=1,inplace=True)
 
 # select a case as test
-case = c_df.loc['Czechia//']
+case = c_df.loc['Mexico//']
 x = case.index
 y = case.values
 
 sns.lineplot(x=x[35:],y=y[35:])
 plt.xticks(rotation=90)
-#for i in c_df.index:
-#    print i
+plt.title("Mexico")
 
 
+# very crude estimation of growth rate
+for i in range(len(case)):
+    if case[i-1] == 0:
+        continue
+    else:
+        print float(case[i])/float(case[i-1])
+
+print case.pct_change()
 ### TO DO: IMPLEMENT SELECTING 2 CASES, FORMATTING THEM LONGFORM
 ### (https://github.com/mwaskom/seaborn-data/blob/master/fmri.csv)
 ### AND PLOTTING THEM COMPARATIVELY
