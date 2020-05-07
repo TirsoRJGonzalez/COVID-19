@@ -9,7 +9,6 @@ and offers functionality for comparative plotting. At the moment the user can
 compare two countries' absolute or adjusted number of cases, as well as simple 
 growth timeseries.
 
-
 Adjusting is performed from number of tests, web-scraped from Wikipedia:
 https://en.wikipedia.org/wiki/Template:COVID-19_testing
 And formatted into a pickled (pkl) dataframe
@@ -146,6 +145,7 @@ if check_growth:
         g = sns.lineplot(x='Dates',y='Growth Adjusted',hue='Country',data=c_both)
     else:
         g = sns.lineplot(x='Dates',y='% of Change',hue='Country',data=c_both)
+    # format labels for readability
     for item in g.get_xticklabels():
         item.set_rotation(45)
 
